@@ -364,12 +364,10 @@ class PARSER:
         self.snmp_command = ''
 
     def get_snmp(self, oids):
-        cmd_v3 = '%s %s -O q -v %s -u %s -l %s -a %s -A %s -x %s -X %s %s -m %s'\
-                 % (self.snmp_command, self.host, conf['snmp_version'], conf['snmp_security_name'],
-                    conf['snmp_security_level'],
+        cmd_v3 = '%s -O q -v %s -u %s -l %s -a %s -A %s -x %s -X %s -m %s %s %s' \
+                 % (self.snmp_command, conf['snmp_version'], conf['snmp_security_name'], conf['snmp_security_level'],
                     conf['snmp_authentication_protocol'], conf['snmp_authentication_password'],
-                    conf['snmp_privacy_protocol'], conf['snmp_privacy_password'],
-                    oids, self.mib_file)
+                    conf['snmp_privacy_protocol'], conf['snmp_privacy_password'], self.mib_file, self.host, oids)
         cmd_v2 = '%s %s -O q -v %s -c %s %s -m %s' \
                  % (self.snmp_command, self.host, conf['snmp_version'],
                     conf['snmp_community'],
