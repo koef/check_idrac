@@ -377,7 +377,7 @@ class PARSER:
         status, output = run(snmp_cli)  # query snmp data
         if status != 0:
             if 'Unknown Object Identifier' in output:
-                print 'your MIB may out of dated!'
+                print 'your MIB may be outdated!'
                 print 'error -', output.replace('\n', '. ')
             elif 'Timeout:' in output:
                 print 'SNMP timeout!'
