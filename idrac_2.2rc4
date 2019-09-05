@@ -435,7 +435,7 @@ class PARSER:
         for t in tmp:
             if len(self.hardware[3].split('|')) > len(tmp[t]):
                 for r in range(len(tmp[t]), len(self.hardware[3].split('|'))):
-                    tmp[t].append('(n/a)')
+                    tmp[t].append('(N/A)')
         return tmp
 
     def raise_alert(self, tmp, value_on_alert):
@@ -446,7 +446,7 @@ class PARSER:
         alert = 0
         for key in tmp.keys():
             for stat in value_on_alert:  # check status of hw
-                if tmp[key][int(stat)] == '(n/a)':
+                if tmp[key][int(stat)] == '(N/A)':
                     continue
                 if type(stat) == int:
                     if conf['state_warn'] == '$ALL$':
@@ -827,7 +827,7 @@ class PARSER:
                 for v in value_on_alert:
                     v = int(v)
                     hw[v] = hw[v].upper()
-                if hw[3] == '(N/A)' or hw[3] == '(n/a)':
+                if hw[3] == '(N/A)':
                     hw_3 = hw[3]
                 else: hw_3 = round(float(hw[3])/1024, 2)
                 output.append(tmp % (self.hardware[2], hw[0], hw[1].replace('"', ''), hw[5], hw[2],
